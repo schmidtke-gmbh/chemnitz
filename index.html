@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ablaufplan Drehtag – Kampfsport Akademie Chemnitz</title>
+<style>
+  :root {
+    --bg: #0e0f13;
+    --card: #161821;
+    --card-hover: #1c1f2b;
+    --accent: #e4002b;
+    --accent-2: #ff3352;
+    --text: #f2f4f8;
+    --muted: #9aa3b2;
+    --border: #242836;
+    --success: #35c27a;
+    --warn: #f5b642;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 40px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 16px;
+  }
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .meta-bar span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .meta-bar strong {
+    color: var(--text);
+  }
+
+  section.block {
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: "";
+    width: 4px;
+    height: 22px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  details {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  details:hover {
+    background: var(--card-hover);
+    border-color: #2d3244;
+  }
+  details[open] {
+    background: var(--card-hover);
+    border-color: var(--accent);
+  }
+  summary {
+    padding: 18px 22px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    margin-left: auto;
+    font-size: 24px;
+    color: var(--muted);
+    font-weight: 300;
+    transition: transform 0.2s ease;
+  }
+  details[open] summary::after {
+    content: "–";
+    color: var(--accent);
+  }
+  .time {
+    background: rgba(228, 0, 43, 0.12);
+    color: var(--accent-2);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    min-width: 115px;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+  .duration {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: -8px;
+  }
+  .content {
+    padding: 0 22px 22px 22px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    color: var(--text);
+  }
+  .content p { margin-bottom: 10px; color: #d4d9e3; }
+  .content ul { padding-left: 20px; margin: 8px 0 12px 0; }
+  .content li { margin-bottom: 6px; color: #d4d9e3; }
+  .content h4 {
+    font-size: 14px;
+    margin: 16px 0 6px 0;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .chip {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .chip strong { color: var(--accent-2); display: block; margin-bottom: 4px; font-size: 13px; }
+
+  /* Script blocks */
+  .script {
+    background: rgba(255,255,255,0.02);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 14.5px;
+  }
+  .script .scene {
+    font-weight: 700;
+    color: var(--accent-2);
+    margin-top: 10px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .script .scene:first-child { margin-top: 0; }
+  .script em.dir {
+    color: var(--muted);
+    font-style: italic;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  .script .line {
+    display: block;
+    margin: 6px 0;
+  }
+  .script .line::before {
+    content: "„";
+    color: var(--accent);
+  }
+  .script .line::after {
+    content: "\"";
+    color: var(--accent);
+  }
+
+  .hook-tag {
+    display: inline-block;
+    background: rgba(245, 182, 66, 0.15);
+    color: var(--warn);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 6px;
+    margin-bottom: 8px;
+  }
+  .tech-tag {
+    background: rgba(53, 194, 122, 0.15);
+    color: var(--success);
+  }
+  .ads-tag {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+  }
+
+  .checklist li {
+    list-style: none;
+    padding-left: 28px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 16px;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 9px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+  }
+  .btn:hover { background: var(--accent); border-color: var(--accent); }
+
+  @media (max-width: 640px) {
+    body { padding: 20px 12px; }
+    summary { padding: 14px 16px; gap: 10px; font-size: 15px; }
+    .time { min-width: 95px; font-size: 12px; padding: 4px 8px; }
+    .content { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <span class="badge">Drehtag · Freitag, 24. April 2026</span>
+    <h1>Ablaufplan · Kampfsport Akademie Chemnitz</h1>
+    <p class="subtitle">Video- &amp; Foto-Produktion · Rundgang · Trainingsszenen · Meta Ads mit Torsten</p>
+    <div class="meta-bar">
+      <span>📍 <strong>Location:</strong> Kampfsport Akademie Chemnitz</span>
+      <span>🎬 <strong>Produktion:</strong> Schmidtke GmbH</span>
+      <span>⏱️ <strong>Zeitraum:</strong> 08:00 – ca. 17:00 Uhr</span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <button class="btn" onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">Alle öffnen</button>
+    <button class="btn" onclick="document.querySelectorAll('details').forEach(d=>d.open=false)">Alle schließen</button>
+    <button class="btn" onclick="window.print()">Drucken / PDF</button>
+  </div>
+
+  <!-- SECTION 1: ZEITPLAN -->
+  <section class="block">
+    <h2>Zeitplan im Überblick</h2>
+
+    <details open>
+      <summary>
+        <span class="time">08:00 – 08:45</span>
+        <span>Anlieferung &amp; Setup</span>
+        <span class="duration">· 45 Min</span>
+      </summary>
+      <div class="content">
+        <p>Ankunft vor Ort, Ausladen von Kamera-, Licht- und Tontechnik. Kurze Location-Abstimmung mit Torsten: Welche Räume, welche Ecken, welche Kurse sind vorgesehen.</p>
+        <h4>Checkliste Setup</h4>
+        <ul class="checklist">
+          <li>Kameras, Objektive, Gimbal aufbauen</li>
+          <li>Lichter positionieren (Interviewbereich + Trainingsfläche)</li>
+          <li>Ton-Check: Ansteckmikro für Torsten, Richtmikro für Atmosphäre</li>
+          <li>Akkus geladen, SD-Karten formatiert &amp; beschriftet</li>
+          <li>Abstimmung mit Torsten: Reihenfolge der Szenen</li>
+        </ul>
+      </div>
+    </details>
+
+    <details open>
+      <summary>
+        <span class="time">08:45 – 10:00</span>
+        <span>Studio-Rundgang &amp; B-Roll (ohne Leute)</span>
+        <span class="duration">· 75 Min</span>
+      </summary>
+      <div class="content">
+        <p>Wir filmen die Akademie in Ruhe – leere Halle, saubere Kamerafahrten, Detailaufnahmen. Diese Bilder bilden die Grundlage für das Rundgang-Video und sind unverzichtbare B-Roll für sämtliche Ads.</p>
+        <h4>Was wir aufnehmen</h4>
+        <div class="grid">
+          <div class="chip"><strong>Außen &amp; Eingang</strong>Fassade, Schild, Tür öffnet sich – „Welcome-Shot"</div>
+          <div class="chip"><strong>Empfang / Rezeption</strong>Theke, Schaukasten, Atmosphäre</div>
+          <div class="chip"><strong>Trainingshalle leer</strong>Weitwinkel, Gimbal-Fahrt, Matte</div>
+          <div class="chip"><strong>Umkleiden &amp; Duschen</strong>Sauberkeit, Ordnung, Details</div>
+          <div class="chip"><strong>Equipment</strong>Sandsäcke, Pratzen, Schutzausrüstung</div>
+          <div class="chip"><strong>Wand-Details</strong>Logos, Urkunden, Fotos, Pokale</div>
+          <div class="chip"><strong>Licht &amp; Stimmung</strong>Sonnenlicht, Schatten, Bodenspiegelungen</div>
+          <div class="chip"><strong>Slow-Motion-Details</strong>Handschuhe binden, Matte betreten</div>
+        </div>
+        <p style="margin-top:14px;"><span class="hook-tag tech-tag">TECH</span>Jede Einstellung min. 8–10 Sek. halten, damit Schnitt &amp; Textbausteine passen.</p>
+      </div>
+    </details>
+
+    <details open>
+      <summary>
+        <span class="time">10:00 – 13:00</span>
+        <span>Trainings-Aufnahmen mit Team</span>
+        <span class="duration">· 3 Std</span>
+      </summary>
+      <div class="content">
+        <p>Torstens Team ist vor Ort. Wir stellen verschiedene Trainingssituationen nach. Ziel: authentische, dynamische Bilder, die quer durch alle Zielgruppen funktionieren (Erwachsene, Frauen, Kinder, Fortgeschrittene).</p>
+
+        <h4>Szenen-Plan (flexibel)</h4>
+        <div class="grid">
+          <div class="chip"><strong>Szene 1 · Warm-Up</strong>Gruppe stellt sich auf, Trainer zählt an, Gemeinschaftsgefühl</div>
+          <div class="chip"><strong>Szene 2 · Techniktraining</strong>Paar-Übung, Pratzenarbeit, Trainer korrigiert</div>
+          <div class="chip"><strong>Szene 3 · Selbstverteidigung</strong>Realistische Szene: Abwehr, Griff lösen, Deeskalation</div>
+          <div class="chip"><strong>Szene 4 · Frauentraining</strong>Fokus Empowerment, ruhige Close-Ups</div>
+          <div class="chip"><strong>Szene 5 · Sparring / Intensität</strong>Echte Action, Schweiß, Konzentration</div>
+          <div class="chip"><strong>Szene 6 · Team-Moment</strong>Am Ende: Kreis, Abklatschen, „Osss!"</div>
+          <div class="chip"><strong>Szene 7 · Einzel-Porträts</strong>3–4 Mitglieder kurz in die Kamera lachen / Blick</div>
+        </div>
+
+        <h4>Foto-Block parallel</h4>
+        <ul>
+          <li>Action-Fotos während der Szenen (2. Kamera / Zweitgerät)</li>
+          <li>Posed Shots: Gruppenbild, Einzelportraits Torsten &amp; Trainer</li>
+          <li>Detail-Stills: Hände, Füße, Gürtel – für Social-Kacheln</li>
+        </ul>
+
+        <p style="margin-top:10px;"><span class="hook-tag">REGIE-TIPP</span>Szenen 2× drehen: einmal „echt", einmal bewusst inszeniert für Slow-Mo.</p>
+      </div>
+    </details>
+
+    <details open>
+      <summary>
+        <span class="time">13:00 – 13:30</span>
+        <span>Pause &amp; Umbau auf Interview-Setup</span>
+        <span class="duration">· 30 Min</span>
+      </summary>
+      <div class="content">
+        <p>Kurzes Essen, Sichtung erster Takes, Umbau der Licht-/Ton-Situation für Interview. Ideal: Hintergrund mit Logo, etwas Tiefe (z.B. Halle im Unschärfe-Bereich).</p>
+      </div>
+    </details>
+
+    <details open>
+      <summary>
+        <span class="time">13:30 – 16:00</span>
+        <span>Werbevideos &amp; Interview mit Torsten</span>
+        <span class="duration">· 2,5 Std</span>
+      </summary>
+      <div class="content">
+        <p>Hier entsteht der Content, der verkauft: Interview-Footage (für längere Videos &amp; Website), plus kurze direkte Ansprachen in die Kamera für Meta Ads. Wir arbeiten die Skripte Schritt für Schritt ab – siehe Abschnitt „Meta Ads Skripte".</p>
+
+        <h4>Block A · Interview (ca. 45 Min)</h4>
+        <ul>
+          <li>Warum gibt es die Akademie? Was ist dein Antrieb?</li>
+          <li>Was unterscheidet euch von anderen Schulen?</li>
+          <li>Für wen ist das Training geeignet?</li>
+          <li>Welche Veränderungen erlebst du bei Mitgliedern?</li>
+          <li>Was würdest du jemandem sagen, der zögert?</li>
+        </ul>
+
+        <h4>Block B · Kurze Ads direkt in die Kamera (ca. 90 Min)</h4>
+        <p>6 Skript-Varianten – siehe unten. Je Skript 2–3 Takes, verschiedene Tonalitäten (ruhig, energisch, sympathisch).</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="time">16:00 – 17:00</span>
+        <span>Puffer · Pick-Ups · Abbau</span>
+        <span class="duration">· 60 Min</span>
+      </summary>
+      <div class="content">
+        <p>Reserve für Nachdrehs einzelner Einstellungen, zusätzlicher B-Roll, Abbau &amp; Einladen.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- SECTION 2: META ADS SKRIPTE -->
+  <section class="block">
+    <h2>Meta Ads Skripte (Direkt in die Kamera)</h2>
+    <p style="color:var(--muted); margin-bottom:18px; font-size:14px;">6 unterschiedliche Hook-Typen mit ausgearbeitetem Verkaufs-Aufbau: Hook → Problem → Lösung → Beweis → Angebot → CTA. Torsten spricht jedes Skript 2–3× in leicht unterschiedlichen Intensitäten (ruhig, energisch, sympathisch).</p>
+
+    <details open>
+      <summary>
+        <span class="hook-tag ads-tag">SKRIPT 1</span>
+        <span>Pattern Interrupt · „STOP! Bevor du scrollst…"</span>
+      </summary>
+      <div class="content">
+        <p style="color:var(--muted); font-size:13px; margin-bottom:10px;">Länge ca. 45–60 Sek. · Klassischer Hard-Stop-Hook, gut für kalten Traffic.</p>
+        <div class="script">
+          <span class="scene">🎬 Einstellung 1 – Nahaufnahme, direkt in die Kamera</span>
+          <em class="dir">Torsten schaut fest in die Kamera, hebt die Hand leicht</em>
+          <span class="line">STOP! Kurz bevor du weiterscrollst – ich hab eine ehrliche Frage an dich:</span>
+          <span class="line">Wünschst du dir mehr Selbstbewusstsein im Alltag? Willst du fitter werden, Stress abbauen und gleichzeitig lernen, dich im Ernstfall zu verteidigen?</span>
+          <span class="line">Wenn ja, dann solltest du die nächsten 30 Sekunden genau zuhören.</span>
+
+          <span class="scene">🎬 Einstellung 2 – Schnitt auf Trainingsszenen</span>
+          <em class="dir">B-Roll: Gruppe im Training, Pratzenarbeit, Schweiß, echte Gesichter</em>
+          <span class="line">Mein Name ist Torsten, ich leite die Kampfsport Akademie Chemnitz – seit Jahren helfen wir Menschen aus Chemnitz, Flöha und Grüna genau bei diesen drei Dingen: fit werden, mental stärker werden, und sich im Notfall wirklich verteidigen können.</span>
+          <span class="line">Bei uns trainierst du nicht alleine. Du trainierst in einem Team, das dich unterstützt – egal ob du Anfänger bist oder schon Erfahrung hast.</span>
+
+          <span class="scene">🎬 Einstellung 3 – Close-Up auf Mitglieder, Teamspirit</span>
+          <span class="line">Unsere Mitglieder berichten uns immer wieder das Gleiche: weniger Rückenschmerzen, bessere Haltung, mehr Energie im Job – und dieses Gefühl, endlich mal wieder was für sich getan zu haben.</span>
+
+          <span class="scene">🎬 Einstellung 4 – Torsten in der Halle, CTA</span>
+          <span class="line">Deshalb lade ich dich jetzt zu einem kostenlosen Probetraining ein. Kein Vertrag, keine versteckten Kosten – nur du, wir und eine Stunde, die dir zeigt, was in dir steckt.</span>
+          <span class="line">Klick jetzt auf den Link unter diesem Video und sicher dir deinen Platz. Wir sehen uns auf der Matte.</span>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="hook-tag ads-tag">SKRIPT 2</span>
+        <span>Zielgruppen-Ansprache · „Du aus Chemnitz…"</span>
+      </summary>
+      <div class="content">
+        <p style="color:var(--muted); font-size:13px; margin-bottom:10px;">Länge ca. 45–60 Sek. · Lokaler Trigger, räumt die drei häufigsten Einwände ab.</p>
+        <div class="script">
+          <span class="scene">🎬 Szene 1 – Torsten vor der Akademie</span>
+          <span class="line">Du kommst aus Chemnitz, Flöha oder Grüna…</span>
+          <span class="line">…und du wolltest schon lange mit Kampfsport anfangen – aber du denkst dir: „Ich bin zu alt." – „Ich bin nicht fit genug." – „Ich hab keine Lust auf brutales Rumgehaue."</span>
+          <em class="dir">(kurze Pause, Torsten lächelt)</em>
+          <span class="line">Dann pass jetzt gut auf – denn das sind genau die drei Sätze, die ich jede Woche höre. Und ich sag dir ganz ehrlich: Die sind alle drei falsch.</span>
+
+          <span class="scene">🎬 Szene 2 – Schnitt in die Akademie, Trainingsszenen</span>
+          <em class="dir">Mischung aus Erwachsenen, Frauen, Einsteigern und Fortgeschrittenen</em>
+          <span class="line">Wir sind die Kampfsport Akademie Chemnitz. Und bei uns geht's nicht darum, wer am härtesten zuschlägt. Es geht um Respekt, Disziplin und persönliche Entwicklung.</span>
+          <span class="line">Wir haben Mitglieder zwischen 18 und 60. Leute, die seit 20 Jahren keinen Sport gemacht haben. Frauen, die zum ersten Mal einen Sandsack schlagen. Männer, die nach Feierabend endlich den Kopf freikriegen wollen.</span>
+          <span class="line">Sie alle haben eins gemeinsam: Sie trainieren in ihrem Tempo, mit einem Team, das sie stärkt.</span>
+
+          <span class="scene">🎬 Szene 3 – Close-Up Torsten, ruhig und direkt</span>
+          <span class="line">Fit werden. Selbstvertrauen aufbauen. Stress abbauen. Lernen, wie du dich verteidigst. Alles an einem Ort – und alles in deinem Tempo.</span>
+          <span class="line">Komm zum kostenlosen Probetraining. Unverbindlich, ohne Vertrag, ohne Ausrede. Link klicken, Termin wählen – fertig. Wir freuen uns auf dich.</span>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="hook-tag ads-tag">SKRIPT 3</span>
+        <span>Für Frauen · „Fühl dich sicher – überall."</span>
+      </summary>
+      <div class="content">
+        <p style="color:var(--muted); font-size:13px; margin-bottom:10px;">Länge ca. 50–70 Sek. · Emotional, Empowerment-fokussiert. Targeting: Frauen 20–50.</p>
+        <div class="script">
+          <span class="scene">🎬 Szene 1 – Torsten ruhig, direkt, ehrlich</span>
+          <span class="line">An alle Frauen aus Chemnitz und Umgebung, die das hier gerade sehen:</span>
+          <span class="line">Hast du dich schon mal abends auf dem Heimweg unwohl gefühlt? Hast du dich in der Tiefgarage umgedreht, weil du Schritte gehört hast? Oder dir gewünscht, du wüsstest einfach – im Notfall weiß ich, was ich tue?</span>
+          <em class="dir">(Pause, ernst)</em>
+          <span class="line">Dann ist dieses Video genau für dich.</span>
+
+          <span class="scene">🎬 Szene 2 – B-Roll Frauentraining</span>
+          <em class="dir">Fokus: Techniken, Konzentration, Stärke, Gemeinschaft unter Frauen</em>
+          <span class="line">Bei uns in der Kampfsport Akademie Chemnitz lernst du nicht, wie man kämpft. Du lernst, wie du gar nicht erst in eine Situation reingerätst, aus der du kämpfen musst.</span>
+          <span class="line">Du lernst, wie du selbstbewusst auftrittst. Wie du klare Grenzen setzt. Und wenn es wirklich drauf ankommt – wie du dich effektiv wehrst, ganz egal wie groß oder stark dein Gegenüber ist.</span>
+
+          <span class="scene">🎬 Szene 3 – B-Roll Atmosphäre, Lächeln, Austausch</span>
+          <span class="line">Und das Beste: Du trainierst in einer Atmosphäre, in der du dich wohlfühlst. Keine starrenden Blicke, kein Konkurrenzdruck – nur Frauen und Männer, die das Gleiche wollen wie du: stärker werden. Körperlich und mental.</span>
+
+          <span class="scene">🎬 Szene 4 – Torsten, direkter CTA</span>
+          <span class="line">Ich lade dich zu einem kostenlosen Probetraining ein. Du brauchst keine Vorerfahrung, keine spezielle Kleidung, keinen Mut. Nur 60 Minuten Zeit.</span>
+          <span class="line">Klick auf den Link, such dir einen Termin aus – und entdecke, wie stark du wirklich bist.</span>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="hook-tag ads-tag">SKRIPT 4</span>
+        <span>Storytelling · „Auch ich hab mal angefangen."</span>
+      </summary>
+      <div class="content">
+        <p style="color:var(--muted); font-size:13px; margin-bottom:10px;">Länge ca. 60 Sek. · Authentisch, persönliche Story von Torsten. Senkt die Hemmschwelle enorm.</p>
+        <div class="script">
+          <span class="scene">🎬 Szene 1 – Torsten ruhig, erzählend, leicht seitlich</span>
+          <span class="line">Ich verrate dir kurz was über mich: Ich hab vor Jahren selbst mal genau da gestanden, wo du vielleicht gerade stehst.</span>
+          <span class="line">Unsicher. Unfit. Ohne richtige Richtung. Ich hab mir gewünscht, dass ich mich einfach wohler in meiner Haut fühle – und vor allem, dass ich weiß: Wenn was passiert, kann ich mich verteidigen.</span>
+
+          <span class="scene">🎬 Szene 2 – B-Roll Training, authentische Szenen</span>
+          <span class="line">Kampfsport hat mein Leben verändert. Nicht wegen der Techniken – sondern wegen der Menschen, die mich dort aufgefangen haben. Wegen der Disziplin, die ich gelernt hab. Wegen dem Gefühl, nach jedem Training ein bisschen mehr Herr meines eigenen Lebens zu sein.</span>
+          <span class="line">Deshalb habe ich die Kampfsport Akademie Chemnitz aufgebaut. Weil ich genau das weitergeben will – an Menschen wie dich.</span>
+
+          <span class="scene">🎬 Szene 3 – B-Roll Mitglieder-Momente</span>
+          <span class="line">Bei uns trainieren Menschen, die nach der Arbeit Stress loswerden wollen. Frauen, die sich sicherer fühlen wollen. Männer, die wieder in Form kommen wollen. Jung und alt, Anfänger und Erfahrene.</span>
+          <span class="line">Was sie alle verbindet: Sie haben den ersten Schritt gemacht. Und genau diesen Schritt lade ich dich jetzt auch ein zu machen.</span>
+
+          <span class="scene">🎬 Szene 4 – Torsten, Close-Up, persönlich</span>
+          <span class="line">Komm zu einem kostenlosen Probetraining. Kein Risiko, keine Verpflichtung. Nur du, ich und eine Stunde, die vielleicht deinen Blick auf dich selbst verändert.</span>
+          <span class="line">Link klicken, Termin buchen. Ich freu mich, dich kennenzulernen.</span>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="hook-tag ads-tag">SKRIPT 5</span>
+        <span>Vergleich / Problem-Solution · „Fitnessstudio vs. Kampfsport"</span>
+      </summary>
+      <div class="content">
+        <p style="color:var(--muted); font-size:13px; margin-bottom:10px;">Länge ca. 50 Sek. · Bricht das Fitnessstudio-Klischee. Starker Gegensatz = gute Retention.</p>
+        <div class="script">
+          <span class="scene">🎬 Szene 1 – Torsten mit kleinem Schmunzeln, direkt in die Kamera</span>
+          <span class="line">Mal ganz ehrlich: Du hast im Januar ein Fitnessstudio-Abo abgeschlossen. Im Februar warst du noch drei Mal da. Und im März zahlst du nur noch dafür, dass dein Bankkonto sich leert.</span>
+          <span class="line">Kennst du das? Ich hör's jede Woche.</span>
+
+          <span class="scene">🎬 Szene 2 – B-Roll Teamspirit, Abklatschen, gemeinsames Training</span>
+          <em class="dir">Gruppe klatscht ab, Trainer motiviert, Schweiß, echtes Lachen</em>
+          <span class="line">Und weißt du, warum das passiert? Weil niemand auf dich wartet, wenn du nicht kommst. Weil niemand dich fragt, wie's dir geht. Weil du ein Kunde bist – keine Person.</span>
+          <span class="line">Bei uns ist das anders. Bei uns bist du Teil einer Gemeinschaft, die dich pusht, die dich feiert, und die dich vermisst, wenn du mal nicht da bist.</span>
+
+          <span class="scene">🎬 Szene 3 – B-Roll Trainer, Pratzenarbeit, Fortschritt</span>
+          <span class="line">Du bekommst nicht nur ein Workout. Du bekommst echte Techniken, die du fürs Leben behältst. Du baust Fitness auf, du lernst Selbstverteidigung, du entwickelst Disziplin – und nebenbei hast du zum ersten Mal seit Jahren wieder richtig Spaß am Training.</span>
+
+          <span class="scene">🎬 Szene 4 – Torsten, direkter Abschluss</span>
+          <span class="line">Probier's aus. Kostenloses Probetraining. Kein Vertrag, keine Abo-Falle. Nur 60 Minuten, die dir zeigen, warum so viele Menschen aus Chemnitz das Fitnessstudio gegen den Kampfsport getauscht haben.</span>
+          <span class="line">Link in der Beschreibung. Wir sehen uns.</span>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="hook-tag ads-tag">SKRIPT 6</span>
+        <span>Direct Response Short · 15–20 Sekunden</span>
+      </summary>
+      <div class="content">
+        <p style="color:var(--muted); font-size:13px; margin-bottom:10px;">Ultrakurz · für Reels/Stories/TikTok. Schnelle Cuts, Beat-getrieben. Retargeting-optimiert.</p>
+        <div class="script">
+          <span class="scene">🎬 Cut 1 (0:00 – 0:03) · Torsten Close-Up, energisch</span>
+          <span class="line">Drei Gründe, warum du JETZT mit Kampfsport anfangen solltest.</span>
+
+          <span class="scene">🎬 Cut 2 (0:03 – 0:07) · B-Roll Sandsack, intensive Schläge</span>
+          <span class="line">Erstens: Du baust Stress ab wie mit keiner anderen Sportart. Ein Training – und der Kopf ist frei.</span>
+
+          <span class="scene">🎬 Cut 3 (0:07 – 0:11) · B-Roll Technik, Selbstverteidigung</span>
+          <span class="line">Zweitens: Du lernst, dich im Notfall zu verteidigen. Keine leeren Versprechen – echte Technik, die funktioniert.</span>
+
+          <span class="scene">🎬 Cut 4 (0:11 – 0:15) · B-Roll Team, Abklatschen, Lächeln</span>
+          <span class="line">Drittens: Du findest eine Gemeinschaft, die dich trägt. Keine Einzelkämpfer – eine zweite Familie.</span>
+
+          <span class="scene">🎬 Cut 5 (0:15 – 0:20) · Torsten CTA, direkt</span>
+          <span class="line">Kostenloses Probetraining. Link unten. Komm vorbei – wir zeigen dir alles.</span>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- SECTION 3: REFERENZ-TEXT -->
+  <section class="block">
+    <h2>Referenz-Texte / bestehende Kampagne</h2>
+
+    <details>
+      <summary>
+        <span class="hook-tag">REFERENZ</span>
+        <span>Bestehender Werbetext: „STOP – bevor du weiter scrollst"</span>
+      </summary>
+      <div class="content">
+        <p><strong>STOP! 🛑</strong> Bevor du weiter scrollst: Fühlst du dich manchmal unsicher oder wünschst dir mehr Selbstbewusstsein? Möchtest du deine Fitness verbessern und gleichzeitig Selbstverteidigungstechniken erlernen?</p>
+        <p>Dann ist unser Kampfsportschule genau das Richtige für dich!</p>
+        <p>Vereinbare jetzt ein <strong>kostenloses Probetraining</strong> an einem unserer Standorte in Chemnitz Zentrum, Flöha oder Chemnitz Grüna und überzeuge dich selbst – ganz unverbindlich.</p>
+        <h4>Wie läuft das Probetraining ab?</h4>
+        <ul>
+          <li>Du meldest dich unkompliziert über die Webseite oder telefonisch an.</li>
+          <li>Beim Probetraining lernst du Trainer, Methoden und Atmosphäre kennen.</li>
+          <li>Keine Vorerfahrung nötig – das Team führt dich Schritt für Schritt.</li>
+          <li>Ganz in Ruhe ausprobieren – ohne Verpflichtung.</li>
+        </ul>
+        <h4>Unsere Standorte</h4>
+        <ul>
+          <li>📍 Chemnitz Zentrum: Annaberger Straße 105, 09120 Chemnitz</li>
+          <li>📍 Flöha: Augustusburger Straße 23, 09557 Flöha</li>
+          <li>📍 Chemnitz Grüna: Reichenbrander Straße 4, 09224 Chemnitz Grüna</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="hook-tag">REFERENZ</span>
+        <span>Bestehendes Skript: Karl-Marx-Monument / Pattern Interrupt</span>
+      </summary>
+      <div class="content">
+        <div class="script">
+          <span class="scene">🎬 Szene 1 – Vor dem Karl-Marx-Monument (Pattern Interrupt)</span>
+          <em class="dir">Sprecher steht vor dem Karl-Marx-Kopf in Chemnitz</em>
+          <span class="line">Du kommst aus Chemnitz oder Umgebung… und wolltest schon immer mit Kampfsport anfangen – aber du denkst dir: „Ich bin zu alt", „Ich bin nicht fit genug" oder „Ich hab keine Lust auf brutales Rumgehaue"?</span>
+          <em class="dir">(kurze Pause)</em>
+          <span class="line">Dann pass jetzt auf.</span>
+
+          <span class="scene">🎬 Szene 2 – Schnitt in die Akademie</span>
+          <em class="dir">Trainingsszenen: Erwachsene, Kinder, Frauen beim Training</em>
+          <span class="line">Wir sind die Kampfsport Akademie Chemnitz. Bei uns geht's nicht um „Hau drauf" – sondern um Respekt, Disziplin und persönliche Entwicklung. Fit werden, Selbstvertrauen aufbauen, Stress abbauen – alles an einem Ort.</span>
+
+          <span class="scene">🎬 Szene 3 – Trainer &amp; Teamspirit</span>
+          <em class="dir">Trainer erklärt, freundliche Stimmung, High-Fives, Fokus</em>
+          <span class="line">Wir zeigen dir, wie du dich verteidigst – aber auch, wie du deine mentale Stärke entwickelst. Fokus, Energie und echte Gemeinschaft.</span>
+
+          <span class="scene">🎬 Szene 4 – Call to Action</span>
+          <em class="dir">Sprecher in der Akademie, sympathisch, direkt</em>
+          <span class="line">Klick jetzt auf den Link und sicher dir dein kostenloses Probetraining. Komm vorbei, probier's aus – und entdecke, was wirklich in dir steckt.</span>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    Ablaufplan · Schmidtke GmbH · erstellt für Kampfsport Akademie Chemnitz · Drehtag 24.04.2026
+  </footer>
+
+</div>
+</body>
+</html>
