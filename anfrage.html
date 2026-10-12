@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kostenloses Probetraining | Kampfsportakademie Chemnitz</title>
+<meta name="description" content="Sichere Dir Dein kostenloses Probetraining bei der Kampfsportakademie Chemnitz. In 3 Schritten zum Termin.">
+<meta name="robots" content="noindex">
+<link rel="preload" href="fonts/sk-modernist-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header scrolled" id="header">
+  <div class="bar">
+    <a href="index.html" class="brand"><img src="images/logo-kampfsportakademie-weiss.svg" alt="Kampfsportakademie Chemnitz" width="142" height="72"></a>
+    <div class="nav-cta"><a href="index.html" class="btn btn--light">← Zur Startseite</a></div>
+  </div>
+</header>
+
+<main id="main-content">
+<section class="page-hero">
+  <div class="wrap text-center">
+    <span class="eyebrow" style="justify-content:center">Kostenloses Probetraining</span>
+    <h1>Starte <span class="hl">jetzt</span> durch</h1>
+    <p class="lead" style="margin:18px auto 0">In 3 kurzen Schritten zu Deinem unverbindlichen Probetraining. Wir melden uns für ein kurzes 15-Minuten-Telefongespräch.</p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap form-wrap">
+    <div class="legal-card">
+      <div class="progress"><div class="progress__bar" id="bar"></div></div>
+
+      <!-- Netlify Forms: works on Netlify with zero backend. -->
+      <form name="probetraining" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="danke.html" id="form">
+        <input type="hidden" name="form-name" value="probetraining">
+        <input type="hidden" name="sportart" id="f-sportart">
+        <input type="hidden" name="standort" id="f-standort">
+        <p hidden><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+
+        <!-- STEP 1 -->
+        <div class="fstep active" data-step="1">
+          <h2>Was interessiert Dich?</h2>
+          <p class="lead">Wähle die Richtung, die am besten zu Dir passt.</p>
+          <div class="choices" data-group="sportart">
+            <button type="button" class="choice" data-val="Kampfsport / Selbstverteidigung"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></span><span><b>Kampfsport &amp; Selbstverteidigung</b><small>Krav Maga, Kickboxen, Waffenkampf</small></span></button>
+            <button type="button" class="choice" data-val="Kinderunterricht"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/><path d="M2 20a7 7 0 0 1 20 0"/></svg></span><span><b>Kinderunterricht</b><small>Altersgerecht & spielerisch</small></span></button>
+            <button type="button" class="choice" data-val="Personal Training"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9h12M6 15h12M4 9v6M20 9v6"/></svg></span><span><b>Personal Training</b><small>1:1 auf Dein Ziel abgestimmt</small></span></button>
+            <button type="button" class="choice" data-val="Fitnessstudio"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M3 10l4-4M21 14l-4 4M2 13l3 3M19 8l3 3"/></svg></span><span><b>Fitnessstudio</b><small>Kraft- & Ausdauertraining</small></span></button>
+          </div>
+          <div class="form-nav"><span></span>
+            <button type="button" class="btn btn--primary row" data-next>Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="fstep" data-step="2">
+          <h2>Welcher Standort passt?</h2>
+          <p class="lead">Wir sind 3× in und um Chemnitz für Dich da.</p>
+          <div class="choices" data-group="standort">
+            <button type="button" class="choice" data-val="Chemnitz Zentrum"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Chemnitz Zentrum</b><small>Hauptstandort mit Fitnessbereich</small></span></button>
+            <button type="button" class="choice" data-val="Chemnitz Grüna"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Chemnitz Grüna</b><small>Training für die ganze Familie</small></span></button>
+            <button type="button" class="choice" data-val="Flöha"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Flöha</b><small>Kampfsport & Selbstverteidigung</small></span></button>
+            <button type="button" class="choice" data-val="Egal / berate mich"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.1 9a3 3 0 1 1 5.8 1c-.4 1.4-2 2-2.4 3M12 17h.01"/></svg></span><span><b>Noch unsicher</b><small>Beratet mich gern telefonisch</small></span></button>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn--light row" data-prev><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Zurück</button>
+            <button type="button" class="btn btn--primary row" data-next>Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="fstep" data-step="3">
+          <h2>Deine Kontaktdaten</h2>
+          <p class="lead">Wir rufen Dich für ein kurzes 15-Minuten-Gespräch zurück.</p>
+          <div class="field"><label for="name">Name *</label><input type="text" id="name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="tel">Telefon *</label><input type="tel" id="tel" name="telefon" required autocomplete="tel"></div>
+          <div class="field"><label for="mail">E-Mail</label><input type="email" id="mail" name="email" autocomplete="email"></div>
+          <div class="field"><label for="quelle">Wie bist Du auf uns aufmerksam geworden?</label>
+            <select id="quelle" name="quelle">
+              <option value="">Bitte wählen (optional)</option>
+              <option>Google-Suche</option>
+              <option>Google Anzeige</option>
+              <option>Facebook / Instagram</option>
+              <option>ChatGPT oder eine andere KI</option>
+              <option>Empfehlung von Freunden / Familie</option>
+              <option>Vor Ort gesehen / Flyer</option>
+              <option>Sonstiges</option>
+            </select></div>
+          <div class="field"><label for="msg">Nachricht (optional)</label><textarea id="msg" name="nachricht" rows="3"></textarea></div>
+          <label class="consent"><input type="checkbox" name="datenschutz" required><span>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu.</span></label>
+          <div class="form-nav">
+            <button type="button" class="btn btn--light row" data-prev><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Zurück</button>
+            <button type="submit" class="btn btn--primary row">Probetraining anfragen
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <p class="text-center" style="color:var(--ink-faint);font-size:14px;margin-top:22px">Lieber direkt anrufen? Kein Problem, ruf uns an: <a href="tel:+4937152031514" style="color:var(--red);font-weight:600;white-space:nowrap">0371 52031514</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:0;padding-top:0">
+      <span>© 2026 Kampfsportakademie Chemnitz</span>
+      <span><a href="impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+      <span>Marketing von <a href="https://www.schmidtke-gmbh.de" target="_blank" rel="noopener">Schmidtke GmbH</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+/* Multi-step funnel */
+(function(){
+  const form = document.getElementById('form');
+  if(!form) return;
+  const steps = [...form.querySelectorAll('.fstep')];
+  const bar = document.getElementById('bar');
+  let cur = 0;
+
+  const render = () => {
+    steps.forEach((s,i) => s.classList.toggle('active', i === cur));
+    bar.style.width = ((cur+1)/steps.length*100) + '%';
+    window.scrollTo({top:0, behavior:'smooth'});
+  };
+
+  // choice selection -> store into hidden field
+  form.querySelectorAll('.choices').forEach(group => {
+    const key = group.dataset.group;
+    const hidden = document.getElementById('f-'+key);
+    group.querySelectorAll('.choice').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.choice').forEach(b => b.classList.remove('sel'));
+        btn.classList.add('sel');
+        hidden.value = btn.dataset.val;
+      });
+    });
+  });
+
+  form.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
+    // require a choice on selection steps
+    const active = steps[cur];
+    const group = active.querySelector('.choices');
+    if(group && !group.querySelector('.sel')){
+      group.animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'none'}],{duration:240});
+      return;
+    }
+    if(cur < steps.length-1){ cur++; render(); }
+  }));
+  form.querySelectorAll('[data-prev]').forEach(b => b.addEventListener('click', () => {
+    if(cur > 0){ cur--; render(); }
+  }));
+
+  // Vorauswahl von der Kinderseite (?kind=1): Kinderunterricht wählen und direkt zu Schritt 2
+  if(new URLSearchParams(location.search).get('kind')==='1'){
+    const btn=form.querySelector('.choice[data-val="Kinderunterricht"]');
+    if(btn){ btn.click(); cur=1; }
+  }
+  render();
+})();
+</script>
+</body>
+</html>

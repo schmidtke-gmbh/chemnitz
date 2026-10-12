@@ -1,0 +1,64 @@
+[build]
+  publish = "."
+
+# Sicherheits-Header
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Hintergrundvideos und Standbilder eine Woche im Browser-Cache halten
+[[headers]]
+  for = "/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Funnel und Danke-Seite nicht in Suchmaschinen
+[[headers]]
+  for = "/anfrage.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/danke.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+# Alte Adressen ohne .html weiterhin bedienen
+[[redirects]]
+  from = "/kinder"
+  to = "/kinder.html"
+  status = 200
+
+[[redirects]]
+  from = "/anfrage"
+  to = "/anfrage.html"
+  status = 200
+
+[[redirects]]
+  from = "/impressum"
+  to = "/impressum.html"
+  status = 200
+
+[[redirects]]
+  from = "/datenschutz"
+  to = "/datenschutz.html"
+  status = 200
+
+# Alte OnePage-Adressen (z. B. aus Anzeigen) weiterleiten statt 404
+[[redirects]]
+  from = "/anfrage-kind"
+  to = "/anfrage.html?kind=1"
+  status = 301
+
+[[redirects]]
+  from = "/frauen-kickboxen"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/kampfsport-chemnitz-aktion"
+  to = "/"
+  status = 301

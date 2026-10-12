@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /anfrage.html
+Disallow: /danke.html
+
+Sitemap: https://kampfsport-akademie-chemnitz.de/sitemap.xml
