@@ -2,166 +2,341 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Kostenloses Probetraining | Kampfsportakademie Chemnitz</title>
-<meta name="description" content="Sichere Dir Dein kostenloses Probetraining bei der Kampfsportakademie Chemnitz. In 3 Schritten zum Termin.">
+<meta name="description" content="Sichere Dir Dein kostenloses Probetraining bei der Kampfsportakademie Chemnitz. In wenigen Klicks zum Termin.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
 <link rel="preload" href="fonts/sk-modernist-bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== Funnel im Typeform-Stil: eine Frage pro Bildschirm, keine Navigation ===== */
+html,body{height:100%}
+body.tf{background:#0b0b0c;color:#fff;overflow-x:hidden}
+.tf-top{position:fixed;inset:0 0 auto 0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,4vw,40px);background:linear-gradient(#0b0b0c 70%,rgba(11,11,12,0))}
+.tf-top img{height:46px;width:auto}
+.tf-count{font-size:14px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.4px}
+.tf-bar{position:fixed;top:0;left:0;right:0;height:4px;background:rgba(255,255,255,.08);z-index:6}
+.tf-bar i{display:block;height:100%;width:0;background:var(--red);transition:width .5s var(--ease)}
+.tf-main{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:96px clamp(16px,5vw,40px) 110px}
+.tf-form{width:100%;max-width:680px}
+.q{display:none}
+.q.active{display:block;animation:qIn .55s var(--ease) both}
+.q.back{animation:qBack .55s var(--ease) both}
+@keyframes qIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes qBack{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:none}}
+.q__num{display:inline-flex;align-items:center;gap:8px;color:var(--red);font-weight:700;font-size:15px;margin-bottom:12px}
+.q__num svg{width:14px;height:14px;stroke:var(--red);stroke-width:3;fill:none}
+.q h1,.q h2{font-size:clamp(26px,3.6vw,38px);line-height:1.18;color:#fff;font-weight:700;text-wrap:balance}
+.q .hint{margin-top:10px;font-size:17px;color:rgba(255,255,255,.65)}
+.opts{display:grid;gap:12px;margin-top:28px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:16px 18px;border-radius:12px;background:#17171a;border:1.5px solid #2c2c31;color:#fff;font:inherit;font-size:17px;cursor:pointer;transition:border-color .2s ease,background-color .2s ease,transform .2s var(--ease)}
+.opt:hover{border-color:#5a5a62;transform:translateY(-1px)}
+.opt:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.opt .key{flex:none;width:30px;height:30px;border-radius:7px;border:1.5px solid #45454c;display:grid;place-items:center;font-size:14px;font-weight:700;color:rgba(255,255,255,.75);transition:all .2s ease}
+.opt b{display:block;font-weight:700}
+.opt small{display:block;font-size:14px;color:rgba(255,255,255,.6);margin-top:2px}
+.opt.sel{border-color:var(--red);background:rgba(223,2,38,.14)}
+.opt.sel .key{background:var(--red);border-color:var(--red);color:#fff}
+.opt.flash{animation:flash .32s ease}
+@keyframes flash{50%{background:rgba(223,2,38,.3)}}
+.fld{margin-top:26px}
+.fld label{display:block;font-size:15px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:6px}
+.fld input,.fld textarea{width:100%;background:transparent;border:0;border-bottom:2px solid #3a3a40;color:#fff;font:inherit;font-size:clamp(20px,2.4vw,26px);padding:10px 2px;border-radius:0;transition:border-color .2s ease}
+.fld textarea{font-size:18px;resize:vertical;min-height:84px}
+.fld input::placeholder,.fld textarea::placeholder{color:rgba(255,255,255,.3)}
+.fld input:focus,.fld textarea:focus{outline:none;border-bottom-color:var(--red)}
+.fld.err input{border-bottom-color:#ff5a6e}
+.err-msg{display:none;margin-top:8px;font-size:14px;font-weight:700;color:#ff5a6e}
+.fld.err .err-msg,.consent-wrap.err .err-msg{display:block}
+.actions{display:flex;align-items:center;gap:16px;margin-top:30px;flex-wrap:wrap}
+.actions .btn{min-height:54px;padding:8px 28px;flex-direction:row;gap:10px}
+.actions .btn svg{width:18px;height:18px}
+.enter-hint{font-size:13px;color:rgba(255,255,255,.45)}
+.enter-hint b{color:rgba(255,255,255,.7)}
+.skip{background:none;border:0;color:rgba(255,255,255,.6);font:inherit;font-size:15px;font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.consent-wrap{margin-top:24px}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.5;color:rgba(255,255,255,.8);cursor:pointer}
+.consent input{flex:none;width:22px;height:22px;margin-top:1px;accent-color:var(--red)}
+.consent a{color:#fff;text-decoration:underline}
+.tf-back{position:fixed;left:clamp(16px,4vw,40px);bottom:max(18px,env(safe-area-inset-bottom));z-index:5;display:inline-flex;align-items:center;gap:8px;background:#17171a;border:1.5px solid #2c2c31;color:#fff;border-radius:99px;padding:10px 16px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.tf-back[hidden]{display:none}
+.tf-back svg{width:16px;height:16px}
+.tf-foot{position:fixed;right:clamp(16px,4vw,40px);bottom:max(22px,env(safe-area-inset-bottom));z-index:4;font-size:12px;color:rgba(255,255,255,.45);text-align:right;line-height:1.6}
+.tf-foot a{color:rgba(255,255,255,.6)}
+.tf-foot .call{display:block;font-size:13px}
+.tf-foot .call a{color:#fff;font-weight:700;white-space:nowrap}
+.opts--age{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.opts--age .opt{flex-direction:column;justify-content:center;gap:0;padding:14px 6px;text-align:center}
+.opts--age .opt b{font-size:24px;line-height:1.1}
+.opts--age .opt small{margin-top:2px}
+.opts-err{display:none;margin-top:12px;font-size:14px;font-weight:700;color:#ff5a6e}
+.q.err .opts-err{display:block}
+.opt .check{flex:none;width:24px;height:24px;border-radius:6px;border:1.5px solid #45454c;display:grid;place-items:center}
+.opt.sel .check{background:var(--red);border-color:var(--red)}
+@media (max-width:640px){
+  .opts--age{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .tf-top img{height:38px}
+  .tf-main{align-items:flex-start;padding-top:92px;padding-bottom:140px}
+  .opt{padding:14px 14px}
+  .tf-foot{left:auto;max-width:58%}
+  .actions .btn{width:100%;justify-content:center}
+  .enter-hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){.q.active,.q.back{animation:none}.tf-bar i{transition:none}}
+</style>
 </head>
-<body>
-
-<header class="header scrolled" id="header">
-  <div class="bar">
-    <a href="index.html" class="brand"><img src="images/logo-kampfsportakademie-weiss.svg" alt="Kampfsportakademie Chemnitz" width="142" height="72"></a>
-    <div class="nav-cta"><a href="index.html" class="btn btn--light">← Zur Startseite</a></div>
-  </div>
+<body class="tf">
+<div class="tf-bar" aria-hidden="true"><i id="bar"></i></div>
+<header class="tf-top">
+  <img src="images/logo-kampfsportakademie-weiss.svg" alt="Kampfsportakademie Chemnitz" width="142" height="72">
+  <span class="tf-count" id="count" aria-live="polite"></span>
 </header>
 
-<main id="main-content">
-<section class="page-hero">
-  <div class="wrap text-center">
-    <span class="eyebrow" style="justify-content:center">Kostenloses Probetraining</span>
-    <h1>Starte <span class="hl">jetzt</span> durch</h1>
-    <p class="lead" style="margin:18px auto 0">In 3 kurzen Schritten zu Deinem unverbindlichen Probetraining. Wir melden uns für ein kurzes 15-Minuten-Telefongespräch.</p>
-  </div>
-</section>
+<main class="tf-main">
+  <!-- Netlify Forms: alle Felder stehen im HTML, damit Netlify sie beim Deploy erkennt -->
+  <form class="tf-form" name="probetraining" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="danke" id="form" novalidate>
+    <input type="hidden" name="form-name" value="probetraining">
+    <!-- Alle Felder stehen fest im HTML (Netlify erkennt sie nur so). Auswahlfragen schreiben in diese versteckten Felder. -->
+    <input type="hidden" name="sportart" id="f-sportart">
+    <input type="hidden" name="standort" id="f-standort">
+    <input type="hidden" name="kind_alter" id="f-kind_alter">
+    <input type="hidden" name="quelle" id="f-quelle">
+    <p hidden><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
 
-<section style="padding-top:10px">
-  <div class="wrap form-wrap">
-    <div class="legal-card">
-      <div class="progress"><div class="progress__bar" id="bar"></div></div>
+    <!-- 1: Sportart (Einfachauswahl, springt sofort weiter) -->
+    <section class="q" data-q="sportart">
+      <span class="q__num"><span data-num>1</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <h1>Wofür interessierst Du Dich?</h1>
+      <p class="hint">Dein Probetraining ist kostenlos und unverbindlich.</p>
+      <div class="opts" data-group="sportart" data-required data-keys>
+        <button type="button" class="opt" data-val="Kampfsport / Selbstverteidigung"><span class="key">A</span><span><b>Kampfsport &amp; Selbstverteidigung</b><small>Krav Maga, Kickboxen, Waffenkampf</small></span></button>
+        <button type="button" class="opt" data-val="Kinderunterricht"><span class="key">B</span><span><b>Kampfsport für Kinder</b><small>Altersgerecht und spielerisch</small></span></button>
+        <button type="button" class="opt" data-val="Personal Training"><span class="key">C</span><span><b>Personal Training</b><small>1:1 auf Dein Ziel abgestimmt</small></span></button>
+        <button type="button" class="opt" data-val="Fitnessstudio"><span class="key">D</span><span><b>Fitnessstudio</b><small>Kraft- und Ausdauertraining</small></span></button>
+      </div>
+    </section>
 
-      <!-- Netlify Forms: works on Netlify with zero backend. -->
-      <form name="probetraining" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="danke.html" id="form">
-        <input type="hidden" name="form-name" value="probetraining">
-        <input type="hidden" name="sportart" id="f-sportart">
-        <input type="hidden" name="standort" id="f-standort">
-        <p hidden><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+    <!-- 2: Standort (Einfachauswahl) -->
+    <section class="q" data-q="standort">
+      <span class="q__num"><span data-num>2</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <h2>Welcher Standort passt Dir am besten?</h2>
+      <p class="hint">Wir sind dreimal in und um Chemnitz für Dich da.</p>
+      <div class="opts" data-group="standort" data-required data-keys>
+        <button type="button" class="opt" data-val="Chemnitz Zentrum"><span class="key">A</span><span><b>Chemnitz Zentrum</b><small>Annaberger Straße 105</small></span></button>
+        <button type="button" class="opt" data-val="Chemnitz Grüna"><span class="key">B</span><span><b>Chemnitz Grüna</b><small>Reichenbrander Straße 4</small></span></button>
+        <button type="button" class="opt" data-val="Flöha"><span class="key">C</span><span><b>Flöha</b><small>Augustusburger Straße 23</small></span></button>
+        <button type="button" class="opt" data-val="Noch unsicher"><span class="key">D</span><span><b>Noch unsicher</b><small>Wir beraten Dich gern am Telefon</small></span></button>
+      </div>
+    </section>
 
-        <!-- STEP 1 -->
-        <div class="fstep active" data-step="1">
-          <h2>Was interessiert Dich?</h2>
-          <p class="lead">Wähle die Richtung, die am besten zu Dir passt.</p>
-          <div class="choices" data-group="sportart">
-            <button type="button" class="choice" data-val="Kampfsport / Selbstverteidigung"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></span><span><b>Kampfsport &amp; Selbstverteidigung</b><small>Krav Maga, Kickboxen, Waffenkampf</small></span></button>
-            <button type="button" class="choice" data-val="Kinderunterricht"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/><path d="M2 20a7 7 0 0 1 20 0"/></svg></span><span><b>Kinderunterricht</b><small>Altersgerecht & spielerisch</small></span></button>
-            <button type="button" class="choice" data-val="Personal Training"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9h12M6 15h12M4 9v6M20 9v6"/></svg></span><span><b>Personal Training</b><small>1:1 auf Dein Ziel abgestimmt</small></span></button>
-            <button type="button" class="choice" data-val="Fitnessstudio"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M3 10l4-4M21 14l-4 4M2 13l3 3M19 8l3 3"/></svg></span><span><b>Fitnessstudio</b><small>Kraft- & Ausdauertraining</small></span></button>
-          </div>
-          <div class="form-nav"><span></span>
-            <button type="button" class="btn btn--primary row" data-next>Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </div>
+    <!-- Kinder-Zweig: nur bei Sportart „Kinderunterricht“ (data-kids) -->
+    <section class="q" data-q="kind_name" data-kids>
+      <span class="q__num"><span data-num>3</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <h2>Wie heißt Dein Kind?</h2>
+      <p class="hint">Dann kann unser Trainer Dein Kind beim Probetraining gleich mit Namen begrüßen.</p>
+      <div class="fld"><label for="kind_name">Name des Kindes *</label><input type="text" id="kind_name" name="kind_name" required autocomplete="off" placeholder="z. B. Emma" enterkeyhint="next"><span class="err-msg">Bitte gib den Namen Deines Kindes an.</span></div>
+      <div class="actions"><button type="button" class="btn btn--primary" data-next>Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="enter-hint">oder <b>Enter</b> drücken</span></div>
+    </section>
 
-        <!-- STEP 2 -->
-        <div class="fstep" data-step="2">
-          <h2>Welcher Standort passt?</h2>
-          <p class="lead">Wir sind 3× in und um Chemnitz für Dich da.</p>
-          <div class="choices" data-group="standort">
-            <button type="button" class="choice" data-val="Chemnitz Zentrum"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Chemnitz Zentrum</b><small>Hauptstandort mit Fitnessbereich</small></span></button>
-            <button type="button" class="choice" data-val="Chemnitz Grüna"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Chemnitz Grüna</b><small>Training für die ganze Familie</small></span></button>
-            <button type="button" class="choice" data-val="Flöha"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Flöha</b><small>Kampfsport & Selbstverteidigung</small></span></button>
-            <button type="button" class="choice" data-val="Egal / berate mich"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.1 9a3 3 0 1 1 5.8 1c-.4 1.4-2 2-2.4 3M12 17h.01"/></svg></span><span><b>Noch unsicher</b><small>Beratet mich gern telefonisch</small></span></button>
-          </div>
-          <div class="form-nav">
-            <button type="button" class="btn btn--light row" data-prev><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Zurück</button>
-            <button type="button" class="btn btn--primary row" data-next>Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </div>
+    <section class="q" data-q="kind_alter" data-kids>
+      <span class="q__num"><span data-num>4</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <h2>Wie alt ist <span data-kindname>Dein Kind</span>?</h2>
+      <p class="hint">So schlagen wir die passende Gruppe vor: MINIS 4 bis 6, KIDS 7 bis 9, TEENS 10 bis 13 und Kickboxen 12 bis 15 Jahre.</p>
+      <div class="opts opts--age" data-group="kind_alter" data-required>
+        <button type="button" class="opt" data-val="4"><b>4</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="5"><b>5</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="6"><b>6</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="7"><b>7</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="8"><b>8</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="9"><b>9</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="10"><b>10</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="11"><b>11</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="12"><b>12</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="13"><b>13</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="14"><b>14</b><small>Jahre</small></button>
+        <button type="button" class="opt" data-val="15"><b>15</b><small>Jahre</small></button>
+      </div>
+      <p class="opts-err">Bitte wähle das Alter Deines Kindes.</p>
+    </section>
 
-        <!-- STEP 3 -->
-        <div class="fstep" data-step="3">
-          <h2>Deine Kontaktdaten</h2>
-          <p class="lead">Wir rufen Dich für ein kurzes 15-Minuten-Gespräch zurück.</p>
-          <div class="field"><label for="name">Name *</label><input type="text" id="name" name="name" required autocomplete="name"></div>
-          <div class="field"><label for="tel">Telefon *</label><input type="tel" id="tel" name="telefon" required autocomplete="tel"></div>
-          <div class="field"><label for="mail">E-Mail</label><input type="email" id="mail" name="email" autocomplete="email"></div>
-          <div class="field"><label for="quelle">Wie bist Du auf uns aufmerksam geworden?</label>
-            <select id="quelle" name="quelle">
-              <option value="">Bitte wählen (optional)</option>
-              <option>Google-Suche</option>
-              <option>Google Anzeige</option>
-              <option>Facebook / Instagram</option>
-              <option>ChatGPT oder eine andere KI</option>
-              <option>Empfehlung von Freunden / Familie</option>
-              <option>Vor Ort gesehen / Flyer</option>
-              <option>Sonstiges</option>
-            </select></div>
-          <div class="field"><label for="msg">Nachricht (optional)</label><textarea id="msg" name="nachricht" rows="3"></textarea></div>
-          <label class="consent"><input type="checkbox" name="datenschutz" required><span>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu.</span></label>
-          <div class="form-nav">
-            <button type="button" class="btn btn--light row" data-prev><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Zurück</button>
-            <button type="submit" class="btn btn--primary row">Probetraining anfragen
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <p class="text-center" style="color:var(--ink-faint);font-size:14px;margin-top:22px">Lieber direkt anrufen? Kein Problem, ruf uns an: <a href="tel:+4937152031514" style="color:var(--red);font-weight:600;white-space:nowrap">0371 52031514</a></p>
-  </div>
-</section>
+    <!-- Kontakt: Name (bei Kindern = Elternteil, Feldname bleibt „name“) -->
+    <section class="q" data-q="name">
+      <span class="q__num"><span data-num>3</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <h2 data-adult="Wie heißt Du?" data-kid="Dein Name (Elternteil)">Wie heißt Du?</h2>
+      <p class="hint" data-kids-only hidden>Bitte gib hier Deinen eigenen Namen an. Wir rufen Dich als Elternteil zurück.</p>
+      <div class="fld"><label for="name">Vor- und Nachname *</label><input type="text" id="name" name="name" required autocomplete="name" placeholder="Max Mustermann" enterkeyhint="next"><span class="err-msg">Bitte gib Deinen Namen an.</span></div>
+      <div class="actions"><button type="button" class="btn btn--primary" data-next>Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="enter-hint">oder <b>Enter</b> drücken</span></div>
+    </section>
+
+    <!-- Kontakt: Telefon und E-Mail -->
+    <section class="q" data-q="kontakt">
+      <span class="q__num"><span data-num>4</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <h2>Unter welcher Nummer erreichen wir Dich?</h2>
+      <p class="hint">Wir rufen Dich für ein kurzes 15-Minuten-Gespräch an und vereinbaren Deinen Termin.</p>
+      <div class="fld"><label for="tel">Telefonnummer *</label><input type="tel" id="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="0171 1234567" enterkeyhint="next"><span class="err-msg">Bitte gib eine gültige Telefonnummer an.</span></div>
+      <div class="fld"><label for="mail">E-Mail (optional)</label><input type="email" id="mail" name="email" autocomplete="email" inputmode="email" placeholder="name@beispiel.de" enterkeyhint="next"><span class="err-msg">Bitte prüfe Deine E-Mail-Adresse.</span></div>
+      <div class="actions"><button type="button" class="btn btn--primary" data-next>Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="enter-hint">oder <b>Enter</b> drücken</span></div>
+    </section>
+
+    <!-- Quelle (optional, Einfachauswahl) -->
+    <section class="q" data-q="quelle">
+      <span class="q__num"><span data-num>5</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <h2>Wie bist Du auf uns aufmerksam geworden?</h2>
+      <div class="opts" data-group="quelle" data-keys>
+        <button type="button" class="opt" data-val="Facebook / Instagram"><span class="key">A</span><span><b>Facebook oder Instagram</b></span></button>
+        <button type="button" class="opt" data-val="Google-Suche"><span class="key">B</span><span><b>Google-Suche</b></span></button>
+        <button type="button" class="opt" data-val="Google Anzeige"><span class="key">C</span><span><b>Google-Anzeige</b></span></button>
+        <button type="button" class="opt" data-val="ChatGPT oder eine andere KI"><span class="key">D</span><span><b>ChatGPT oder eine andere KI</b></span></button>
+        <button type="button" class="opt" data-val="Empfehlung"><span class="key">E</span><span><b>Empfehlung von Freunden oder Familie</b></span></button>
+        <button type="button" class="opt" data-val="Vor Ort / Flyer / Sonstiges"><span class="key">F</span><span><b>Vor Ort gesehen, Flyer oder Sonstiges</b></span></button>
+      </div>
+      <div class="actions"><button type="button" class="skip" data-skip>Überspringen</button></div>
+    </section>
+
+    <!-- Abschluss -->
+    <section class="q" data-q="abschluss">
+      <span class="q__num"><span data-num>6</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <h2>Fast geschafft!</h2>
+      <p class="hint" data-adult="Möchtest Du uns vorab noch etwas mitteilen? Zum Beispiel Deine Vorerfahrung oder Fragen zum Training." data-kid="Möchtest Du uns vorab noch etwas mitteilen? Zum Beispiel Vorerfahrung Deines Kindes oder Fragen zum Training.">Möchtest Du uns vorab noch etwas mitteilen? Zum Beispiel Deine Vorerfahrung oder Fragen zum Training.</p>
+      <div class="fld"><label for="msg">Nachricht (optional)</label><textarea id="msg" name="nachricht" rows="3" placeholder="Deine Nachricht"></textarea></div>
+      <div class="consent-wrap"><label class="consent"><input type="checkbox" id="consent" name="datenschutz" value="ja" required><span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu. *</span></label><span class="err-msg">Bitte stimme der Datenschutzerklärung zu.</span></div>
+      <div class="actions"><button type="submit" class="btn btn--primary btn--lg" id="submit">Kostenloses Probetraining anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button></div>
+    </section>
+  </form>
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-bottom" style="border:0;padding-top:0">
-      <span>© 2026 Kampfsportakademie Chemnitz</span>
-      <span><a href="impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
-      <span>Marketing von <a href="https://www.schmidtke-gmbh.de" target="_blank" rel="noopener">Schmidtke GmbH</a></span>
-    </div>
-  </div>
-</footer>
+<button type="button" class="tf-back" id="back" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Zurück</button>
+<div class="tf-foot">
+  <span class="call">Lieber anrufen? <a href="tel:+4937152031514">0371 52031514</a></span>
+  <a href="impressum.html" target="_blank" rel="noopener">Impressum</a> · <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutz</a>
+</div>
 
-<script src="js/main.js"></script>
 <script>
-/* Multi-step funnel */
+document.documentElement.classList.add('js');
 (function(){
-  const form = document.getElementById('form');
-  if(!form) return;
-  const steps = [...form.querySelectorAll('.fstep')];
-  const bar = document.getElementById('bar');
-  let cur = 0;
+  const form   = document.getElementById('form');
+  const all    = [...form.querySelectorAll('.q')];
+  const bar    = document.getElementById('bar');
+  const count  = document.getElementById('count');
+  const back   = document.getElementById('back');
+  const sport  = document.getElementById('f-sportart');
+  const KIDS   = 'Kinderunterricht';
+  let cur = 0;                                   // Index im aktuellen Pfad
 
-  const render = () => {
-    steps.forEach((s,i) => s.classList.toggle('active', i === cur));
-    bar.style.width = ((cur+1)/steps.length*100) + '%';
-    window.scrollTo({top:0, behavior:'smooth'});
+  const isKids = () => sport.value === KIDS;
+  // Aktueller Pfad: Kinder-Fragen (data-kids) nur bei Kinderunterricht
+  const path = () => all.filter(q => !q.hasAttribute('data-kids') || isKids());
+
+  // Texte, die sich zwischen Erwachsenen und Kindern unterscheiden
+  const applyBranch = () => {
+    const k = isKids();
+    form.querySelectorAll('[data-adult][data-kid]').forEach(el => el.textContent = k ? el.dataset.kid : el.dataset.adult);
+    form.querySelectorAll('[data-kids-only]').forEach(el => el.hidden = !k);
+    if(!k){                                      // Kinder-Felder leeren, wenn keine Kinder-Sportart
+      document.getElementById('kind_name').value = '';
+      document.getElementById('f-kind_alter').value = '';
+      form.querySelectorAll('[data-group="kind_alter"] .opt').forEach(o => o.classList.remove('sel'));
+    }
   };
 
-  // choice selection -> store into hidden field
-  form.querySelectorAll('.choices').forEach(group => {
-    const key = group.dataset.group;
-    const hidden = document.getElementById('f-'+key);
-    group.querySelectorAll('.choice').forEach(btn => {
-      btn.addEventListener('click', () => {
-        group.querySelectorAll('.choice').forEach(b => b.classList.remove('sel'));
-        btn.classList.add('sel');
-        hidden.value = btn.dataset.val;
-      });
-    });
-  });
+  const show = (i, dir) => {
+    const p = path();
+    all.forEach(q => q.classList.remove('active','back','err'));
+    cur = Math.max(0, Math.min(i, p.length-1));
+    const q = p[cur];
+    q.classList.add('active'); if(dir < 0) q.classList.add('back');
+    p.forEach((x, n) => { const num = x.querySelector('[data-num]'); if(num) num.textContent = n + 1; });
+    const kn = document.getElementById('kind_name').value.trim();
+    form.querySelectorAll('[data-kindname]').forEach(el => el.textContent = kn || 'Dein Kind');
+    bar.style.width = (cur/(p.length-1)*100) + '%';
+    count.textContent = 'Frage ' + (cur+1) + ' von ' + p.length;
+    back.hidden = cur === 0;
+    window.scrollTo(0,0);
+    const first = q.querySelector('input:not([type=hidden]):not([type=checkbox]),textarea');
+    if(first && matchMedia('(hover:hover)').matches) setTimeout(() => first.focus({preventScroll:true}), 350);
+  };
 
-  form.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
-    // require a choice on selection steps
-    const active = steps[cur];
-    const group = active.querySelector('.choices');
-    if(group && !group.querySelector('.sel')){
-      group.animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'none'}],{duration:240});
+  const setErr = (el, on) => { const box = el.closest('.fld,.consent-wrap'); if(box) box.classList.toggle('err', on); return !on; };
+  const validate = q => {
+    let ok = true;
+    q.querySelectorAll('input[required]:not([type=checkbox])').forEach(inp => {
+      let valid = inp.value.trim().length >= 2;
+      if(inp.type === 'tel') valid = inp.value.replace(/\D/g,'').length >= 6;
+      ok = setErr(inp, !valid) && ok;
+    });
+    q.querySelectorAll('input[type=email]').forEach(inp => {
+      const v = inp.value.trim();
+      ok = setErr(inp, v !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) && ok;
+    });
+    q.querySelectorAll('.opts[data-required]').forEach(g => {
+      const has = document.getElementById('f-' + g.dataset.group).value !== '';
+      q.classList.toggle('err', !has); ok = has && ok;
+    });
+    const c = q.querySelector('#consent');
+    if(c) ok = setErr(c, !c.checked) && ok;
+    return ok;
+  };
+  const next = () => { if(validate(path()[cur])) show(cur+1, 1); };
+
+  // Auswahlfragen: Einfachauswahl springt sofort weiter, Mehrfachauswahl (data-multi) braucht „Weiter“
+  form.querySelectorAll('.opts').forEach(group => {
+    const hidden = document.getElementById('f-' + group.dataset.group);
+    const multi = group.hasAttribute('data-multi');
+    group.querySelectorAll('.opt').forEach(btn => btn.addEventListener('click', () => {
+      if(multi){
+        btn.classList.toggle('sel');
+        hidden.value = [...group.querySelectorAll('.opt.sel')].map(b => b.dataset.val).join(', ');
+        btn.closest('.q').classList.remove('err');
+        return;
+      }
+      group.querySelectorAll('.opt').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel','flash'); setTimeout(() => btn.classList.remove('flash'), 340);
+      hidden.value = btn.dataset.val;
+      btn.closest('.q').classList.remove('err');
+      if(group.dataset.group === 'sportart') applyBranch();
+      setTimeout(() => show(cur+1, 1), 380);
+    }));
+  });
+  form.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', next));
+  form.querySelectorAll('[data-skip]').forEach(b => b.addEventListener('click', () => show(cur+1, 1)));
+  back.addEventListener('click', () => show(cur-1, -1));
+  form.querySelectorAll('input,textarea').forEach(el => el.addEventListener('input', () => { const box = el.closest('.fld,.consent-wrap'); if(box) box.classList.remove('err'); }));
+  document.getElementById('consent').addEventListener('change', e => setErr(e.target, !e.target.checked));
+
+  // Tastatur wie bei Typeform: Buchstaben wählen (nur bei Fragen mit A, B, C …), Enter = weiter
+  document.addEventListener('keydown', e => {
+    const q = path()[cur];
+    if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'BUTTON'){
+      e.preventDefault();
+      if(cur === path().length-1){ form.requestSubmit ? form.requestSubmit() : form.submit(); }
+      else if(!q.querySelector('.opts') || q.querySelector('.opts[data-multi]')) next();
       return;
     }
-    if(cur < steps.length-1){ cur++; render(); }
-  }));
-  form.querySelectorAll('[data-prev]').forEach(b => b.addEventListener('click', () => {
-    if(cur > 0){ cur--; render(); }
-  }));
+    const keyed = q.querySelector('.opts[data-keys]');
+    if(keyed && /^[a-zA-Z]$/.test(e.key) && !/INPUT|TEXTAREA/.test(e.target.tagName) && !e.metaKey && !e.ctrlKey && !e.altKey){
+      const opts = keyed.querySelectorAll('.opt'); const k = e.key.toUpperCase().charCodeAt(0) - 65;
+      if(opts[k]) opts[k].click();
+    }
+  });
 
-  // Vorauswahl von der Kinderseite (?kind=1): Kinderunterricht wählen und direkt zu Schritt 2
-  if(new URLSearchParams(location.search).get('kind')==='1'){
-    const btn=form.querySelector('.choice[data-val="Kinderunterricht"]');
-    if(btn){ btn.click(); cur=1; }
-  }
-  render();
+  form.addEventListener('submit', e => {
+    // Alle Fragen des aktuellen Pfads prüfen (Kinder-Pflichtfelder nur bei Kinderunterricht)
+    const p = path();
+    for(let i = 0; i < p.length; i++){
+      if(!validate(p[i])){ e.preventDefault(); if(i !== cur) show(i, -1); validate(p[i]); return; }
+    }
+    if(!isKids()){ document.getElementById('kind_name').value = ''; document.getElementById('f-kind_alter').value = ''; }
+    document.getElementById('submit').disabled = true;
+  });
+
+  // Von der Kinderseite (/anfrage?kind=1): Kinderunterricht vorwählen und beim Standort starten
+  if(new URLSearchParams(location.search).get('kind') === '1'){
+    sport.value = KIDS;
+    form.querySelector('.opt[data-val="' + KIDS + '"]').classList.add('sel');
+    applyBranch();
+    show(1, 1);
+  } else { applyBranch(); show(0, 1); }
 })();
 </script>
 </body>
