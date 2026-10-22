@@ -31,6 +31,12 @@
   [headers.values]
     X-Robots-Tag = "noindex, follow"
 
+# Browser fragen /favicon.ico automatisch an
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/images/favicon-32.png"
+  status = 200
+
 # Alte Adressen ohne .html weiterhin bedienen
 [[redirects]]
   from = "/kinder"
