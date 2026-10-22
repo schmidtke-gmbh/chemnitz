@@ -24,6 +24,8 @@ document.documentElement.classList.add('js');
     document.body.classList.toggle('menu-open', open);
   };
   burger.addEventListener('click', toggle);
+  const x = menu.querySelector('.menu-close');
+  x && x.addEventListener('click', close);
   scrim && scrim.addEventListener('click', close);
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 })();
