@@ -47,8 +47,12 @@
 <main id="main-content">
 
 <!-- ===================== HERO ===================== -->
-<section class="hero">
-  <div class="hero__bg"><img src="images/hero-training.jpg" alt="" onerror="this.style.display='none'"></div>
+<section class="hero hero--video" data-video="videos/hero-training.mp4" data-video-mobile="videos/hero-training-mobil.mp4">
+  <div class="hero__bg"><img fetchpriority="high" decoding="async" src="images/hero-training.jpg" alt="" onerror="this.style.display='none'"><video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video></div>
+  <button class="cta-video__toggle" type="button" aria-pressed="false" aria-label="Hintergrundvideo pausieren">
+    <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+    <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+  </button>
   <div class="wrap hero__grid">
     <div class="hero-copy">
       <span class="eyebrow">Kampfsportakademie Chemnitz</span>
@@ -422,7 +426,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Kampfsportakademie Chemnitz</span>
-      <span><a href="impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+      <span><a href="impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="#" data-cc-open>Cookie-Einstellungen</a></span>
       <span>Marketing von <a href="https://www.schmidtke-gmbh.de" target="_blank" rel="noopener">Schmidtke GmbH</a></span>
     </div>
     <p class="disclaimer">Die Informationen auf unserer Website beinhalten keine Heilungsversprechen. This site is not a part of the Facebook™ website or Facebook™ Inc. Additionally, this site is NOT endorsed by Facebook™ in any way. FACEBOOK™ is a trademark of FACEBOOK™, Inc.</p>
@@ -430,5 +434,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/tracking.js"></script>
 </body>
 </html>

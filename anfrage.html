@@ -102,6 +102,12 @@ body.tf{background:#0b0b0c;color:#fff;overflow-x:hidden}
     <input type="hidden" name="standort" id="f-standort">
     <input type="hidden" name="kind_alter" id="f-kind_alter">
     <input type="hidden" name="quelle" id="f-quelle">
+    <input type="hidden" name="utm_source">
+    <input type="hidden" name="utm_medium">
+    <input type="hidden" name="utm_campaign">
+    <input type="hidden" name="utm_content">
+    <input type="hidden" name="utm_term">
+    <input type="hidden" name="fbclid">
     <p hidden><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
 
     <!-- 1: Sportart (Einfachauswahl, springt sofort weiter) -->
@@ -209,7 +215,7 @@ body.tf{background:#0b0b0c;color:#fff;overflow-x:hidden}
 <button type="button" class="tf-back" id="back" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Zurück</button>
 <div class="tf-foot">
   <span class="call">Lieber anrufen? <a href="tel:+4937152031514">0371 52031514</a></span>
-  <a href="impressum.html" target="_blank" rel="noopener">Impressum</a> · <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutz</a>
+  <a href="impressum.html" target="_blank" rel="noopener">Impressum</a> · <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutz</a> · <a href="#" data-cc-open>Cookies</a>
 </div>
 
 <script>
@@ -339,5 +345,6 @@ document.documentElement.classList.add('js');
   } else { applyBranch(); show(0, 1); }
 })();
 </script>
+<script src="js/tracking.js"></script>
 </body>
 </html>
